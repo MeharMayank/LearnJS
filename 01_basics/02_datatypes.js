@@ -18,3 +18,5 @@ null => standalone value  (we can use this over undefined to intentionally signa
 undefined =>  (means value has not been assigned)
 symbol => unique
 */
+console.log(typeof undefined) // output --> undefined
+console.log(typeof null) // output --> object
