@@ -30,6 +30,12 @@ console.log(Math.random())
 console.log((Math.random()*10)+1)
 /* We are using this structure to ensure that the value is always above 0. Since, the value
 is between 0 and 1, the value can be 0 or 1 itself. So in order to avoid getting 0, we add 1*/
-console.log((Math.random()*10)+1)
+console.log(Math.floor(random()*10)+1)
+
 const min = 10
 const max = 20
+
+console.log(Math.floor(Math.random() * (max-min+1)) + min)
+/* Here we used (max-min+1) to define the range within which we want our random number to 
+generate. Now, we add 1 to max-min in order to avoid 0 case. And since, we also want to 
+define the minimum value required, we then add min to the equation. */
