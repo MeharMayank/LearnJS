@@ -55,3 +55,9 @@ specify whether we want to create an array of values only or keys only from key-
 else it would always return an empty array as the output.
 */
 
+let score1 = 100
+let score2 = 200
+let score3 = 300
+console.log(Array.of(score1,score2,score3))
+// Array.of creates an array. This way we can create an array 
+// from different values stored in different variables
