@@ -20,7 +20,9 @@ to store the array it would return and then print that variable for desirable re
 // console.log(allHeros)
 
 /*
-NOTE : 
+NOTE : We usually prefer spill operator over concat because here
+we are not restricted and we can simply add more variables / arrays to merge
+as parameters. Following is an example of implementation of spill operator.
 */
 const all_new_heros = [...marvel_heros,...dc_heros]
 console.log(all_new_heros)
