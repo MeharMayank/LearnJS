@@ -21,7 +21,8 @@ const regularUser = {
 const obj1 = {1:"a",2:"b"}
 const obj2 = {3:"a",4:"b"}
 // const obj3 = {obj1,obj2}
-const obj3 = Object.assign({},obj1,obj2)
+// const obj3 = Object.assign({},obj1,obj2) //Efficient method
+const obj3 = {...obj1,...obj2} //However, we will still use spill operator
 console.log(obj3)
 /*
 NOTE : Here we use empty curly parenthesis (which is optional by the way),
