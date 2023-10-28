@@ -23,9 +23,9 @@ NOTE : keys are also stored as strings in the system, however
 we need not write them as strings since the system automatically
 considers keys as a string.
 */
-console.log(JSUser.email) //Method 1 of accessing object
-console.log(JSUser["email"]) // Method 2 of accessing object
-console.log(JSUser["full name"])
+// console.log(JSUser.email) //Method 1 of accessing object
+// console.log(JSUser["email"]) // Method 2 of accessing object
+// console.log(JSUser["full name"])
 /*
 NOTE : Method 2 is preferred over Method 1. For example, consider
 that a key has been declared in the form of a string, now, there is no 
@@ -38,11 +38,35 @@ const mySym = Symbol("key1")
 const JSUser1 = {
     mySym : "mykey1", //Tag 1
     [mySym] : "mykey2" //Tag 2
-    /* NOTE : We cannot directly use Symbol as a key. When we will check the type of 
-    this key, we will notice that it is being treated as string and not as symbol.
-    Hence, that's why we can't directly use symbol as key for an object (Tag 1).
-    The correct way to do so is shown as in Tag 2 i.e. [Symbol Name] : "Value".
-    */
 }
-console.log(typeof JSUser1.mySym)
-console.log(JSUser1[mySym])
+// console.log(typeof JSUser1.mySym)
+// console.log(JSUser1[mySym])
+// console.log(JSUser1)
+/* 
+NOTE : We cannot directly use Symbol as a key. When we will check the type of 
+this key, we will notice that it is being treated as string and not as symbol.
+Hence, that's why we can't directly use symbol as key for an object (Tag 1).
+The correct way to do so is shown as in Tag 2 i.e. [Symbol Name] : "Value".
+*/
+JSUser.email = "hitesh@chatgpt.com" //Updating Values in an Object
+// Object.freeze(JSUser)
+/* NOTE : After using Object.freeze(obj name), any changes made to the
+object will not reflect as we have freezed that object. It will not show any error even if we 
+try to modify the object after freeze but it will not modify.*/
+JSUser.email = "hitesh@microsoft.com"
+// console.log(JSUser)
+
+JSUser.greeting = function(){
+    console.log("Hello JS User");
+}
+console.log(JSUser.greeting) 
+/*
+Here it would just return an reference to a function since we didn't 
+use () while calling the function 
+*/
+console.log(JSUser.greeting())
+JSUser.greetingTwo = function(){
+    console.log(`Hello JS user, ${this.name}`) //string interpolation
+}
+// By using "this" keyword, we can access all properties from the same object
+console.log(JSUser.greetingTwo())
