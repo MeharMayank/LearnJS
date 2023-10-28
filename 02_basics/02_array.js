@@ -25,4 +25,16 @@ we are not restricted and we can simply add more variables / arrays to merge
 as parameters. Following is an example of implementation of spill operator.
 */
 const all_new_heros = [...marvel_heros,...dc_heros]
-console.log(all_new_heros)
+// console.log(all_new_heros)
+
+const another_array = [1,2,3,[4,5,6],7,[6,7,[4,5]]]
+const real_another_array = another_array.flat(Infinity)
+/*
+flat operator : Returns a new array with all sub-array elements 
+concatenated into it recursively up to the specified depth.
+The parameter it takes is the depth till you want it to operate,
+however you can just write Infinity as parameter and it will search 
+till total depth. However, it not recommended and one must always
+enter required depth as parameter.
+*/
+console.log(real_another_array)
