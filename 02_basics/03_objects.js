@@ -11,6 +11,7 @@ In case of constructor, we create an object like this :
 // Object literals
 const JSUser = {
     name : "Hitesh",
+    "full name" : "Hitesh Choudhary",
     age : 18,
     location : "Jaipur",
     email : "hitesh@google.com",
@@ -24,3 +25,24 @@ considers keys as a string.
 */
 console.log(JSUser.email) //Method 1 of accessing object
 console.log(JSUser["email"]) // Method 2 of accessing object
+console.log(JSUser["full name"])
+/*
+NOTE : Method 2 is preferred over Method 1. For example, consider
+that a key has been declared in the form of a string, now, there is no 
+possibility that the key could be accessed through Method 1, it has to be
+accessed through Method 2 only. It has been demonstrated in code above.
+*/
+
+// HOW TO USE SYMBOL AS A KEY AND PRINT IT ?
+const mySym = Symbol("key1")
+const JSUser1 = {
+    mySym : "mykey1", //Tag 1
+    [mySym] : "mykey2" //Tag 2
+    /* NOTE : We cannot directly use Symbol as a key. When we will check the type of 
+    this key, we will notice that it is being treated as string and not as symbol.
+    Hence, that's why we can't directly use symbol as key for an object (Tag 1).
+    The correct way to do so is shown as in Tag 2 i.e. [Symbol Name] : "Value".
+    */
+}
+console.log(typeof JSUser1.mySym)
+console.log(JSUser1[mySym])
