@@ -28,7 +28,6 @@ const all_new_heros = [...marvel_heros,...dc_heros]
 // console.log(all_new_heros)
 
 const another_array = [1,2,3,[4,5,6],7,[6,7,[4,5]]]
-const real_another_array = another_array.flat(Infinity)
 /*
 flat operator : Returns a new array with all sub-array elements 
 concatenated into it recursively up to the specified depth.
@@ -37,4 +36,17 @@ however you can just write Infinity as parameter and it will search
 till total depth. However, it not recommended and one must always
 enter required depth as parameter.
 */
-console.log(real_another_array)
+const real_another_array = another_array.flat(Infinity)
+// console.log(real_another_array)
+
+/* NOTE: Sometimes during data scraping, we get data in various
+formats like node scripts etc.. but we want it in array format.
+So, in order to convert it into array or conduct similar operations,
+we use following commands as demonstrated below. */
+console.log(Array.isArray("Hitesh"))
+// This will tell whether the parameter entered is an array or not
+console.log(Array.from("Hitesh"))
+// This will convert the string into an array
+console.log(Array.from({name:"hitesh"}))
+// This is an interesting case, as it is an object
+//
