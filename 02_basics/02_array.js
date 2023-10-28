@@ -48,5 +48,10 @@ console.log(Array.isArray("Hitesh"))
 console.log(Array.from("Hitesh"))
 // This will convert the string into an array
 console.log(Array.from({name:"hitesh"}))
-// This is an interesting case, as it is an object
-//
+/* Here it is an interesting case. As the parameter is an object, 
+the output returned for this case is an empty array.
+However, in such cases of dealing with objects, we will always have to 
+specify whether we want to create an array of values only or keys only from key-value pair
+else it would always return an empty array as the output.
+*/
+
