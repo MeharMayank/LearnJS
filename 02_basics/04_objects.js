@@ -42,3 +42,11 @@ const users = [
 
 users[1].email
 console.log(tinderUser);
+console.log(Object.keys(tinderUser))
+console.log(Object.values(tinderUser))
+console.log(Object.entries(tinderUser)) 
+/*
+Displays data in array form like keys and values but in the 
+form of key-value pair
+*/
+console.log(tinderUser.hasOwnProperty(isLoggedIn))
