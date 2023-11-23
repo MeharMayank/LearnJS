@@ -23,9 +23,22 @@ const obj2 = {3:"a",4:"b"}
 // const obj3 = {obj1,obj2}
 // const obj3 = Object.assign({},obj1,obj2) //Efficient method
 const obj3 = {...obj1,...obj2} //However, we will still use spill operator
-console.log(obj3)
+// console.log(obj3)
 /*
 NOTE : Here we use empty curly parenthesis (which is optional by the way),
 (however it is recommended to use) as it ensures that all the values will 
 get combined and we will get a result for sure.
 */
+const users = [
+    {
+        id:1,
+        email:"h@gmail.com"
+    },
+    {
+        id:2,
+        email:"i@gmail.com"
+    }
+]
+
+users[1].email
+console.log(tinderUser);
