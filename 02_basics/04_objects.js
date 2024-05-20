@@ -79,3 +79,26 @@ following syntax :
 const {courseInstructor: instructor} = course
 //console.log(courseInstructor);
 console.log(instructor);
+
+
+/* JSON syntax example
+JSON - JavaScript Object Notation
+
+NOTE : JSON is also a kind of an object where both 
+the key and value pair will be in string format.
+
+Ex:
+{
+    "name":"hitesh",
+    "coursename":"JS in hindi",
+    "Price":"Free"
+}
+
+API can also be of array format instead of just object format.
+Example Syntax :
+[
+    {},
+    {},
+    {}
+]
+*/
