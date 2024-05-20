@@ -50,3 +50,32 @@ Displays data in array form like keys and values but in the
 form of key-value pair
 */
 console.log(tinderUser.hasOwnProperty(isLoggedIn))
+
+/* 
+------------------ 
+OBJECT DESTRUCTURE
+------------------ 
+*/
+
+const course={
+    coursename:"js in hindi",
+    price:"ggg",
+    courseInstructor:"hitesh"
+}
+/* 
+Suppose we want to print course.courseInstructor multiple times
+but don't want to type "course.courseInstucture" multiple times.
+Hence, we can use the following syntax which will allow us to use 
+"courseInstructor" instead of "course.courseInstructure". 
+*/
+// course.courseInstructor
+const {courseInstructor} = course
+console.log(courseInstructor)
+
+/* 
+We can also modify the name for our working use by using the 
+following syntax :
+*/
+const {courseInstructor: instructor} = course
+//console.log(courseInstructor);
+console.log(instructor);
