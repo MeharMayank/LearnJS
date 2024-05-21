@@ -1,4 +1,10 @@
 /* NOTE : 
+
+iA constructor in JavaScript is a function used to create and 
+initialize objects, while a singleton is a design pattern that ensures
+a class has only one instance and provides a global point of access to
+it.
+
 There are two ways to declare an object. First : as a Literal
 Second : as a Constructor
 singleton : object created through constructor is always a singleton,
