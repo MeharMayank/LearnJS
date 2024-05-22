@@ -1,4 +1,10 @@
 // Using Constructor Method
+/*
+A constructor function is a function used to create multiple instances
+of objects with similar properties and methods. You use the new 
+keyword to create an instance of an object from a constructor function.
+*/
+
 // const tinderUser = new Object() --> Singleton object
 // const tinderUser = {} --> Non singleton object
 const tinderUser = new Object()

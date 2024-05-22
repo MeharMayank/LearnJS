@@ -1,6 +1,6 @@
 /* NOTE : 
 
-iA constructor in JavaScript is a function used to create and 
+A constructor in JavaScript is a function used to create and 
 initialize objects, while a singleton is a design pattern that ensures
 a class has only one instance and provides a global point of access to
 it.
@@ -14,7 +14,15 @@ In case of constructor, we create an object like this :
 ----------Object.create------------------
 */
 
-// Object literals
+/* Object literals
+
+In JS, creating objects using literal notation and using a constructor
+function are two different approaches.
+
+An object literal is a straightforward way to create an object using 
+a pair of curly braces '{}' with optional key-value pairs.
+*/
+
 const JSUser = {
     name : "Hitesh",
     "full name" : "Hitesh Choudhary",
