@@ -40,3 +40,42 @@ function add2num(num21,num22){
 }
 const result3 = add2num(3,5)
 console.log("Results: ",result3)
+
+
+function loginUserMessage(username){
+    return `${username} just logged in`
+    /* This dynamic string which can incorporate variables into it 
+    and hence allow us to show data dynamically is called String
+    Interpolation (Process Name) / Interpolated String. */
+}
+
+loginUserMessage("hitesh")
+/* NOTE : Since here we have only returned the value to the function,
+hence, we are not able to see any output printed since there is no way 
+to print it. Because the return statement only returns the value into 
+the function but does not print it. It's upto us how we utilize that
+returned data.
+
+Here we did that by using console.log() message.
+*/
+console.log(loginUserMessage("hitesh"))
+
+function loginUseMsg(username1){
+    if(username1===undefined){
+        console.log("Please enter a username")
+        return
+    }
+    return `${username1} just logged in`
+}
+console.log(loginUseMsg())
+
+// ANOTHER WAY OF WRITING THE SAME ABOVE FUNCTION
+function loginUseMsg1(username2 = "sam"){
+    if(!username2){
+        console.log("Please enter a username")
+        return
+    }
+    return `${username} just logged in`
+}
+// Here "sam" is default value
+console.log(loginUseMsg1())
