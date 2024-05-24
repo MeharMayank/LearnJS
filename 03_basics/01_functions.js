@@ -75,7 +75,57 @@ function loginUseMsg1(username2 = "sam"){
         console.log("Please enter a username")
         return
     }
-    return `${username} just logged in`
+    return `${username2} just logged in`
 }
 // Here "sam" is default value
 console.log(loginUseMsg1())
+
+function calculateCartPrice(num10){
+    return num10
+}
+console.log(calculateCartPrice(200,400,500))
+
+/* 
+SPREAD OPERATOR
+---------------
+The spread operator can be used to combine items from different sources 
+into one collection.
+*/
+const firstBowl = ['pawpaw', 'cucumber', 'watermelon'];
+const secondBowl = ['Pineapple', 'Apple', 'banana'];
+const thirdBowl = ['cashew nut', 'Date', 'Strawberry'];
+const fruitMix =  [...firstBowl, ...secondBowl, ...thirdBowl];
+console.log(fruitMix);
+
+/*
+REST OPERATOR
+--------------
+The rest operator collects multiple amounts of something into a single 
+container for processing, such as age calculation we performed.
+*/
+function calculateTotalAgeOfGuest(hostAge, ...guestAges) {
+  let totalAge = hostAge;
+  for (const age of guestAges) {
+    totalAge += age;
+  }
+  return totalAge;
+}
+
+const hostAge = 30;
+const guestAges = [25, 28, 10, 5];
+const totalAge = calculateTotalAgeOfGuest(hostAge, ...guestAges);
+
+/* 
+Q. What would be the value returned by num101 in the following code ?
+*/ 
+function calculate(val1,val2,...num101){
+    return num101
+}
+console.log(calculate(200,3000,400,500,1000))
+/* 
+Ans : 400, 500, 1000
+Because the values 200 & 3000 will be taken as input by val1, val2.
+Rest of the values will be taken by ...num101 which is using Rest 
+operator.
+*/
+
