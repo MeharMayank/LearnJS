@@ -129,3 +129,27 @@ Rest of the values will be taken by ...num101 which is using Rest
 operator.
 */
 
+/*
+We can handle objects and arrays using function as well. Following
+are the examples of the same : 
+*/
+const user = {
+    username: "hitesh",
+    price: 200
+}
+
+function handleObject(anyobject){
+    console.log(`Username is ${anyobject.username} and price is ${anyobject.price}`)
+}
+// handleObject(user) METHOD 1
+handleObject({
+    username : "Sam",
+    price: "400"
+})
+
+const myNewArray = [200, 400, 100, 600]
+function returnSecondValue(getArray){
+    return getArray[1]
+}
+// console.log(returnSecondValue(myNewArray)) METHOD 1
+console.log(returnSecondValue([200,400,500,1000]))
