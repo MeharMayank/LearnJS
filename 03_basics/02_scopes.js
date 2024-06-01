@@ -52,7 +52,7 @@ GLOBAL SCOPE : Variables are accessible throughout the entire code
 FUNCTION SCOPE : Variables are accessible only within the function 
 they declared
 
-BLOCK SCOPE : Variables are accessible only within the block( within
+BLOCK SCOPE : Variables are accessible only within the block(within
 curly braces '{}')
 */
 
@@ -68,3 +68,64 @@ for (let i=0;i<Array.length;i++){
 }
 
 console.log(a)
+
+
+/* NESTED SCOPE */
+// EXAMPLE 1
+function one(){
+    const username = "hitesh"
+    function two(){
+        const website = "youtube"
+        console.log(username)
+    }
+    console.log(website)
+    two()
+}
+one()
+// EXAMPLE 2
+if(true){
+    const username = "hitesh"
+    if(username==="hitesh"){
+        const website="youtube"
+        console.log(username+website)
+    }
+    console.log(website)
+}
+console.log(username)
+
+// INTERESTING EXAMPLE
+function addone(num){
+    return num + 1
+}
+addone(5)
+
+const addTwo = function(num){
+    return num + 2
+}
+addTwo(5)
+/* 
+As noted above, we saw two methods of declaring functions.
+However, the second approach is often called expression. 
+
+Now suppose the following example :
+
+addone(5)
+function addone(num){
+    return num + 1
+}
+
+addTwo(5)
+const addTwo = function(num){
+    return num + 2
+}
+
+Here addone(5) will execute flawlessly since this structure of 
+declaring and using function before defining them is supported in JS.
+
+But for the second part i.e. addTwo(5), an error will be shown. Since
+here we are not only declaring a function but also storing it in a
+variable, a different set of conditions will apply here and we would 
+only be able to execute addTwo() after we have defined the function
+but not before it.
+
+*/
