@@ -46,6 +46,14 @@ Q. WHAT IS A SCOPE ?
 Ans. A scope is the context in which variables, functions, and objects
 are accessible and can be referenced, typically determined by the 
 location where they are declared (eg. global, function, or block scope).
+
+GLOBAL SCOPE : Variables are accessible throughout the entire code
+
+FUNCTION SCOPE : Variables are accessible only within the function 
+they declared
+
+BLOCK SCOPE : Variables are accessible only within the block( within
+curly braces '{}')
 */
 
 let a = 300
