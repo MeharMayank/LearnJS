@@ -21,12 +21,13 @@ connection starts (for example). For such scenarios we use IIFE.
 Also, in order to protect our variables inside the function from
 polluted global scope (that may arise).
 
-[ Here Polluting the global scope means creating variables or 
-  functions in the global namespace, which can lead to conflicts 
-  and bugs, especially in larger codebases or when using third
-  party libraries. When multiple scripts define variables with 
-  the same name globally, they can overwrite each other, causing
-  unexpected behaviour. This makes code harder to debug and maintain.
+[ 
+Here Polluting the global scope means creating variables or 
+functions in the global namespace, which can lead to conflicts 
+and bugs, especially in larger codebases or when using third
+party libraries. When multiple scripts define variables with 
+the same name globally, they can overwrite each other, causing
+unexpected behaviour. This makes code harder to debug and maintain.
 ]
 
 Following is the syntax of IIFE :
