@@ -67,6 +67,8 @@ console.log(add2(3,4))
 
 /* There is one more way to use arrow functions known as Implicit 
 Return. 
+Whereas when we use the word "return" to return the value, that is 
+known as Explicit Return.
 -----------IMPLICIT RETURN-----------
 */
 // const addtwo = (num1, num2) => num1 + num2 //Method 1
@@ -76,3 +78,6 @@ However, if we use {}, we would be required to write return
 keyword.
 */
 console.log(addtwo(4,5))
+/* The advantage of using parenthesis is that it easily allows us 
+to return objects which wouldn't have been possible with curly 
+braces etc. */
