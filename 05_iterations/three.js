@@ -62,5 +62,5 @@ Now, if you run the above code, it will throw an error saying that
 myObject is uniterable. So, we cannot iterate through Object the 
 same way we did with array and maps.
 
-We have a different approach through iterating through objects.
+We have a different approach through iterating through objects.A
 */
