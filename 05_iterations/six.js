@@ -48,3 +48,30 @@ myNums.forEach((num3)=>{
     }
 })
 console.log(newNums2)
+
+// Example 2 (Real world demo of fetching data from DB)
+const books = [
+    {title: 'Book One', genre : 'Fiction', publish: 1981, edition: 2004},
+    {title: 'Book Two', genre : 'Non-Fiction', publish: 1992, edition: 2008},
+    {title: 'Book Three', genre : 'History', publish: 1999, edition: 2007},
+    {title: 'Book Four', genre : 'Non-Fiction', publish: 1989, edition: 2010},
+    {title: 'Book Five', genre : 'Science', publish: 2009, edition: 2014}
+]
+
+const userBooks = books.filter((bk) => bk.genre === 'History' )
+const TwoKBooks = books.filter((bk2) => bk2.publish >= 2000 )
+console.log(userBooks)
+console.log(TwoKBooks)
+
+/* Alternate method (Just for understanding and revision of multiple 
+concepts studied till now) */
+let userBooks2 = books.filter((book) => book.genre === 'Non-Fiction' )
+console.log(userBooks2)
+userBooks2 = books.filter((item) => { return item.publish >= 2000 })
+console.log(userBooks2)
+
+console.log('New line starts here : ')
+userBooks2 = books.filter((items) => {
+    return items.publish >= 1950 && items.genre === 'Non-Fiction'
+})
+console.log(userBooks2)
