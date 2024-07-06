@@ -1,0 +1,17 @@
+/* This JS code will contain all DOM codes 
+used for practice on the browser. Ref : one.html
+*/
+document.getElementById('title')
+// Displays the code within that element
+document.getElementById('title').id
+// Displays the id value of the element
+/* Although, it may seem counterintuitive at first since we are 
+asking id by giving element id as parameter, however, there may be
+cases where we may be interested. For eg. in case of classes. */
+
+document.getElementById('title').class
+//undefined
+document.getElementById('title').className
+// This will show us the class of the element, not line 12.
+// In this case, the output will be : 'heading'
+
