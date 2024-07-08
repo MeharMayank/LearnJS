@@ -15,4 +15,18 @@ document.getElementById('title').className
 // This will show us the class of the element, not line 12.
 // In this case, the output will be : 'heading'
 
-/
+document.getElementById('title').getAttribute('id')
+// output --> 'title'
+document.getElementById('title').getAttribute('class')
+// output --> 'heading'
+
+/*
+We can also set attributes using setAttribute() function. Similar to
+getAttribute() it helps us manipulate the DOM but instead of fetching
+attribute data,it helps us set the attributes for a said element.
+*/
+document.getElementById('title').setAttribute('class','test')
+// output --> undefined
+/*
+
+*/
