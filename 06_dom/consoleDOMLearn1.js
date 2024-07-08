@@ -15,3 +15,4 @@ document.getElementById('title').className
 // This will show us the class of the element, not line 12.
 // In this case, the output will be : 'heading'
 
+/
