@@ -28,5 +28,12 @@ attribute data,it helps us set the attributes for a said element.
 document.getElementById('title').setAttribute('class','test')
 // output --> undefined
 /*
-
+Now here we may have received "undefined" as an output, but this
+setAttribute overrides and the changes are visible in the "Elements"
+section of the browser.
+Here although on line 15 of one.html, although the id and class
+remain unchanged, when we write line 28 on the Chrome Browser Console,
+and run it, we will then see in the Elements section, that the id 
+and class of one.html is updated with latest values run in the
+console (which in this example is class name change to 'test').
 */
