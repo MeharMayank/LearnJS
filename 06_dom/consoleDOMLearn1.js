@@ -79,4 +79,38 @@ as innerHTML also supports HTML tags.
 */
 
 /* Query Selectors Of Interest */
-document.querySelector('h1')
+document.querySelector('h2')
+// <h2>Lorem ipsum dolor sit.</h2>
+/* Here querySelector() function selects only one query at a time.
+Like here there are two h2 tags but the function selected the first
+occurance of the tag only. */
+document.querySelector('#title')
+// <h1 id="title" class="heading">...</h1>
+// # is used for id. Here we are looking for id "title".
+document.querySelector('.heading')
+// <h1 id="title" class="heading">...</h1>
+// . is used for class. Here we are looking for class "heading".
+document.querySelector('input[type="password"]')
+// One can also use CSS selectors with attributes like input with
+// attributes like type="password"
+document.querySelector('ul')
+// <ul>...</ul>
+const myul = document.querySelector('ul')
+myul.querySelector('li')
+// <li>...</li>
+const turnGreen = myul.querySelector('li')
+turnGreen.style.backgroundColor = "green"
+turnGreen.style.padding = "10px"
+turnGreen.innerText
+// 'one'
+
+document.querySelectorAll('li')
+// NodeList(3) [li, li, li]
+
+const tempLiList = document.querySelectorAll('li')
+/* NodeList is not an array. Because if we open NodeList prototype
+section in console of the browser, we can find foreach but we won't 
+be able to find map etc. Remember, an array always has maps etc. in
+its prototype which is not the case with the NodeList.
+
+NodeList is very similar to Array but not the same.*/
