@@ -108,9 +108,70 @@ document.querySelectorAll('li')
 // NodeList(3) [li, li, li]
 
 const tempLiList = document.querySelectorAll('li')
-/* NodeList is not an array. Because if we open NodeList prototype
+tempLiList
+// NodeList(3) [li, li, li]
+tempLiList.style.color = 'green'
+// It will throw an error since it is a NodeList and not an array
+/* Since, tempLiList is a NodeList, it does not mean that it is 
+very different from an array. In fact, NodeList and Array are quite
+similar but not the samre. 
+
+Hence, in order to get the desired output (Since NodeList is working
+with a lot of values here), follow is the method : */
+tempLiList[0].style.color = 'green'
+// 'green'
+/* ----------- NOTE --------------
+NodeList is not an array. Because if we open NodeList prototype
 section in console of the browser, we can find foreach but we won't 
 be able to find map etc. Remember, an array always has maps etc. in
 its prototype which is not the case with the NodeList.
 
 NodeList is very similar to Array but not the same.*/
+
+const myH1 = document.querySelectorAll('H1')
+myH1
+// NodeList [h1#title.heading]
+myH1.style.color = 'green'
+/* Here it will again throw an error. We will have to declare the 
+element we are referring to */
+myH1[0].style.color ='green'
+// 'green'
+/* The type of data type returned is one of the key differences
+querySelector() and querySelectorAll() */
+
+tempLiList.forEach(function (l) {
+    l.style.backgroundColor = 'green'
+})
+// The browser would display all list elements with green background
+
+/* Since, NodeList is not array, if we want to use maps etc. or any
+functionality that array has, we will have to convert the NodeList 
+into an array. */
+
+document.getElementsByClassName('list-item')
+// HTMLCollection [li.list-item, li.list-item, li.list-item]
+/* Using getElementByClassName() returned a HTMLCollection [], which
+is very different from a NodeList[] */
+
+/* Now since it is not a NodeList, hence, loops won't work here 
+(eg : forEach() etc.). Here, we will have to convert this into 
+an Array for it be used that way. */
+
+const tempClassList = document.getElementsByClassName('list-item')
+Array.from(tempClassList)
+// [li.list-item, li.list-item, li.list-item]
+/* Here, we can see that the HTMLCollection [] has successfully been
+converted into an array which provides us with all the benefits of 
+using an array. If we check the Prototype section for this element,
+we can see that the array exclusives like map and loops are also 
+available for us to use now. */
+const myConvertedArray = Array.from(tempClassList)
+myConvertedArray
+// [li.list-item, li.list-item, li.list-item]
+
+// Now we can use forEach() on tempClassList
+myConvertedArray/forEach(function (li){
+    li.style.color = 'orange'
+})
+/* The browser would display the color of the text of all li elements
+as orange */
