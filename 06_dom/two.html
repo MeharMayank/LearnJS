@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur Code</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent')
+    console.log(parent)
+    console.log(parent.children)
+    console.log(parent.children[1])
+    console.log(parent.children[1].innerHTML)
+
+    for(let i=0;i<parent.children.length;i++){
+        console.log(parent.children[i].innerHTML)
+    }
+    parent.children[1].style.color = "orange"
+    // Here certain properties like firstElementChild & lastElementChild
+    // help us go from parent to child
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild)
+    // We can similarly go vice versa
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne)
+    /* Now using querySelector always is not a good idea. Using 
+    querySelector becomes quite expensive as it has to traverse the 
+    whole tree (& utilising that many threads in the process). So,
+    in cases where want to directly access the parent and don't have
+    anything to do with child, we then use the parentElement property.
+    */
+    console.log(dayOne.parentElement)
+    console.log(dayOne.nextElementSibling)
+
+    console.log("NODES : ",parent.childNodes)
+    /* Here childNodes are a complex tree structure which include all
+    elements from line breaks to text, comments etc. Here the first
+    line is counted but the consequetive ones are ignored by the
+    browser for render.
+
+    If we observe the output of line 43, we would see that the output
+    returned is :
+    NodeList(9) [text, div.day, text, div.day, text, div.day, text, 
+    div.day, text]
+
+    Here, one would expect to see div contents like Monday, Tuesday etc
+    but here we would not see that. Instead we would see all the elements
+    like text, div, comment, line breaks etc. (these are all considered
+    as a node). So each parent and element has childNodes.
+
+    This helps us understand that the browser behind the scene builds
+    such complex tree structures to render information. Hence, one 
+    may listen many saying things like "JS should be more optimized"
+    but, it is simply not possible because web is not optimized and 
+    given the scale of the backend operation rendering in the browser.
+
+    FUN FACT : Most of ReactJS's code is the manipulation done in the 
+    memory with the help of childNodes itself. 
+    */
+</script>
+</html>
