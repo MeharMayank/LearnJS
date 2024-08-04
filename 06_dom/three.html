@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code</title>
+</head>
+<body style="background-color: #212121; color:#fff">
+    
+</body>
+<script>
+    // Creating new element using DOM
+    const div = document.createElement('div')
+    console.log(div)
+    div.className = "main"
+    // div.id = "myID"
+    div.id = Math.random()*10+1 // just for fun
+    div.id = Math.round(Math.random()*10+1)
+    div.setAttribute("title","generated title")
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"
+    div.innerText = "Chai aur Code"
+    /* Here we must note that whenever we use a property with "div"
+    in this example, we are actually taking the original values and 
+    writing the new values over it. For ex, innerText used here 
+    overwrote the initial value of innerText and the result was updated
+    accordingly. However, this is not desirable.
+
+    People often prefer setAttribute() over .<property> (like .id etc.)
+    This setAttribute() does not calls the value but instead directly
+    updates the value in the original location as it reduces the 
+    number of steps to complete this task.
+    */
+    const addText = document.createTextNode("Chai aur Code")
+    div.appendChild(addText)
+    /* Now, one may notice that all these DOM maipulation is not visible
+    on the webpage but rather can be noticed in the console. This is
+    because all these data is currently stored in the memory and 
+    not on the page. In order to attach the data onto the page, we
+    will have to ask document to attach all these to the page. 
+    Following is the syntax : */
+    document.body.appendChild(div)
+
+    /* Here both line number 15-22 and line number 34-35 are 
+    both correct approaches. However, the debate exists as both require
+    more than one step to update the values. So, both are roughly
+    the same in terms of optimization. However, which is better is
+    up for debate.*/
+</script>
+</html>
