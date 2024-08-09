@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM</title>
+</head>
+<body style="background-color: #212121; color:white;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    // Edit Method 1
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        // Since langName here is not attached to the class, so 
+        // it will not return desired output
+        document.querySelector('.language').appendChild(li)
+        // Here we managed to attach language to a class '.language'
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+    /* Here, we used innerHTML to traverse through the list
+    and append a value at the end of the list. Now, this is a decent
+    approach if we are dealing with quite small list values, but
+    if we are talking about values in thousands or more, then 
+    traversing through the whole list even though we just want to 
+    skip to the end and append a value does not makes sense and 
+    it is not an optimized solution. 
+    So, in large scale projects, we follow a similar method but 
+    using an optimized approach. */
+
+    function addOptiLanguage(langName){
+        const li = documents.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('golang')
+
+    //Edit Method 2
+    const secLang = document.querySelector("li:nth-child(2)")
+    /* The nth-child selector isn't a JS feature by itself. It's 
+    primarily a CSS Selector. However, we can use it in JS when we
+    are selecting elements from the DOM. 
+    In JS, we often use methods like querySelector or querySelectorAll
+    to select elements, and we can use CSS selectors 
+    (including nth-child) within these methods to pick out specific 
+    elements, which we can then manipulate with JS. */
+
+    // Unoptimized Approach to edit in DOM (line 42)
+    /*
+    secLang.innerHTML = "Mojo"
+    */
+
+    //Optimized Approach
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secLang.replaceWith(newli)
+
+    //Edit Method 3
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+    // Remove in DOM
+    constlastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
