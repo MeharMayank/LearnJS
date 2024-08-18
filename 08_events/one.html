@@ -5,14 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Events</title>
 </head>
-<body>
+<body style="background-color: #414141;color:aliceblue;">
     <h2>Amazing images</h2>
     <div>
         <ul id="images">
-            <li><img width="200px" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
-            <li><img width="" src="" alt=""></li>
-            <li><img width="" src="" alt=""></li>
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a href="https://google.com" style="color:aliceblue;" id="google">Google</a></li>
         </ul>
     </div>
 </body>
+<script>
+    /* All events in JS execute sequently as JS is a sequentual language.
+    However, there are some exceptions which we would be discussing here.*/
+    /* These events are invoked based on activity like movement of mouse etc. */
+    document.getElementById('owl').onclick = function(){
+        alert("owl clicked")
+    }
+    /* As we discussed, we can use onclick function directly within the html tag, but that won't be a good approach.
+    Hence, we tried another possible implementation for the same, (as seen above). However, if we are using onclick with id
+    there can still be issues which may arise. 
+    Hence, although the above approach may look good, but it will end up providing us with limited information. We should
+    ideally use Event listeners which not only allow us onclick ability but also propogation ability as well. (We will 
+    discuss propogation shortly..) 
+    
+    Now following is third and the best approach :
+    */
+    document.getElementById('owl').addEventListener('click',function(){
+        alert("owl clicked again")
+    },false)
+    /* Here you must have noticed the third parameter i.e. "false". This value is false by default (the reasons for which we would
+    be discussing shortly.). However, since the value is false or 0 by default, we can write the addEventListener() function without
+    entering the third value aka false, as leaving it out would by default be considered as false or 0.
+
+    Now, we would be looking at some more approaches through which we could have done the above task, although not as efficient as 
+    Event Listeners, these approaches would help us understand how JS evolved over time and how we ended up following practices that
+    we do today.
+
+    Following are some of the alternate approaches used :
+    1. attachEvent() -> These weer used during the era of Internet Explorer.
+    2. jQuery -> This was kind of a predecesser to modern JS frameworks like React and Angular. There used to  be a function named "on" (Event Listener of sorts)
+    which was utilized with jQuery. 
+    */
+
+    /*
+    Now, let's revist the code on line 37. Here let's ignore alert() example for some time. The more we work with events in JS, the more we would be using event objects.
+    In this case, it's the "e" inside function() paramter of addEventListener() on line 58. There are various kinds of event objects in JS, however, we would only be 
+    discussing a few important ones.
+    */
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log(e)
+    }) // Here we haven't wrote "false" as third paraneter as it would be considered as such by default since there is no other value in its place.
+    /*
+    
+    */
+
+
+</script>
 </html>
