@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Events</title>
 </head>
+
 <body style="background-color: #414141;color:aliceblue;">
     <h2>Amazing images</h2>
     <div>
         <ul id="images">
-            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
-            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
-            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
             <li><a href="https://google.com" style="color:aliceblue;" id="google">Google</a></li>
         </ul>
     </div>
@@ -22,7 +34,7 @@
     /* All events in JS execute sequently as JS is a sequentual language.
     However, there are some exceptions which we would be discussing here.*/
     /* These events are invoked based on activity like movement of mouse etc. */
-    document.getElementById('owl').onclick = function(){
+    document.getElementById('owl').onclick = function () {
         alert("owl clicked")
     }
     /* As we discussed, we can use onclick function directly within the html tag, but that won't be a good approach.
@@ -34,9 +46,9 @@
     
     Now following is third and the best approach :
     */
-    document.getElementById('owl').addEventListener('click',function(){
+    document.getElementById('owl').addEventListener('click', function () {
         alert("owl clicked again")
-    },false)
+    }, false)
     /* Here you must have noticed the third parameter i.e. "false". This value is false by default (the reasons for which we would
     be discussing shortly.). However, since the value is false or 0 by default, we can write the addEventListener() function without
     entering the third value aka false, as leaving it out would by default be considered as false or 0.
@@ -56,13 +68,87 @@
     In this case, it's the "e" inside function() paramter of addEventListener() on line 58. There are various kinds of event objects in JS, however, we would only be 
     discussing a few important ones.
     */
-    document.getElementById('owl').addEventListener('click',function(e){
+    document.getElementById('owl').addEventListener('click', function (e) {
         console.log(e)
     }) // Here we haven't wrote "false" as third paraneter as it would be considered as such by default since there is no other value in its place.
     /*
-    
+    Here when we check the console for the output the above code generates, we will see that
+    there will be a pointerEvent object, which would be containing a lot of values like view, timeStamp
+    etc. It mainly consists of Browser and Environment Events like position of mouse, location where the mouse clicked etc.
+    In fact, some questions arising from similar topics can be asked in the interview like what was the height and width of
+    the window? What view was it? etc.
+
+    We would be discussing some of the following event types for starting off with this topic, later on 
+    we can explore more such useful events :
+    1. type
+    2. timestamp
+    3. defaultPrevented
+    4. target
+    5. toElement
+    6. srcElement
+    7. currentTarget
+    8. clientX
+    9. clientY
+    10. screenX
+    11. screenY
+    12. altkey
+    13. ctrlkey
+    14. shiftkey
+    15. keyCode
     */
 
+    // Event Propogation
+    /*
+    In JS, when an event is triggered on an element, it doesn't just
+    stay on that one element. The event "Propagates" or spreads out to the
+    parent elements as well.
+
+    Bubbling : 
+    It occurs when an event is triggered on a child element, it "bubbles up"
+    through each parent element in the DOM hierarchy. The event first triggers on 
+    the target element, then it propagates up to the parent, grandparent, and 
+    so on.
+
+    Capturing : 
+    Before the event bubbles up, it first goes through the capturing phase. The
+    event starts at the top-most element (window/document) and "captures" down 
+    through each parent element until it reaches the target element.
+
+    Event Listeners : 
+    Developers can set event listeners to listen for events during the capturing
+    or bubbling phases.
+    "addEventListener" -> has a 3rd parameter to control this : 
+    1. 'true' -> for capturing phase
+    2. 'false' -> (default) for bubbling phase
+
+
+    Now, if we want to understand propagation in easy language, let's refer to following example :
+    Event Propagation in JavaScript:
+
+    Imagine a house with a mom, dad, and a child
+    The child's room is the smallest, the dad's room is medium, and the mom's room is the biggest
+    Bubbling Up:
+    When an "event" happens in the child's room (like a ball dropping)
+    The event starts to "bubble up" to the dad's room
+    Then it "bubbles up" to the mom's room
+
+    Capturing:
+    The mom is watching the child's room from the top of the stairs
+    When the ball drops, the mom "captures" the event before it reaches the dad's room
+
+    Key Takeaways:
+    Events can "propagate" or spread out in two ways:
+    "Bubbling up" from the child's room to the dad to the mom
+    "Capturing" the event from the top before it reaches the other rooms
+    */
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("clicked inside the ul");
+    }, false)
+
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl clicked")
+    }, false)
 
 </script>
+
 </html>
