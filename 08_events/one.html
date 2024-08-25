@@ -82,7 +82,7 @@
     we can explore more such useful events :
     1. type
     2. timestamp
-    3. defaultPrevented
+    3. preventDefault
     4. target
     5. toElement
     6. srcElement
@@ -95,6 +95,7 @@
     13. ctrlkey
     14. shiftkey
     15. keyCode
+    16. tagName
     */
 
     // Event Propogation
@@ -127,12 +128,12 @@
 
     Imagine a house with a mom, dad, and a child
     The child's room is the smallest, the dad's room is medium, and the mom's room is the biggest
-    Bubbling Up:
+    Bubbling Up: (true)
     When an "event" happens in the child's room (like a ball dropping)
     The event starts to "bubble up" to the dad's room
     Then it "bubbles up" to the mom's room
 
-    Capturing:
+    Capturing: (false)
     The mom is watching the child's room from the top of the stairs
     When the ball drops, the mom "captures" the event before it reaches the dad's room
 
@@ -143,12 +144,57 @@
     */
     document.getElementById('images').addEventListener('click', function (e) {
         console.log("clicked inside the ul");
-    }, false)
+    }, false) // An alternate with true can be tested similarly
 
     document.getElementById('owl').addEventListener('click', function (e) {
         console.log("owl clicked")
     }, false)
 
+    /*
+    In some cases, suppose if we have put a script on to an outer element and
+    Event Propogation is also present but we don't want it to propogate to
+    the outer element (i.e. to avoid bubbling by inner element) and you also
+    want the same for the outer element that it doen't captures the inner 
+    element and hence, both the elements remain separate.
+
+    In that case, we use "e" or event which has been captured (in a more literal sense),
+    it has a property called .stopPropagation() which does the isolation for us.
+    */
+    document.getElementById('owl').addEventListener('click', function(e){
+        e.stopPropagation()
+    },false)
+
+    /*
+    preventDefault() method tracks the event and prevents the default action 
+    to execute
+    */
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault()
+        console.log("Google Clicked")
+    },false)
+
+    // Let's try to implement a feature such that when we click an image, it gets removed
+    document.querySelector('#images').addEventListener('click',function(e){
+        // console.log(e.target.parentNode)
+        // let removeIt = e.target.parentNode 
+        // removeIt.remove() //Method 1
+
+        /*  Now the problem with Method 1 is that as long as one is clicking the images
+        it is working fine, but as soon as one clicks list item (bullet point or alt), it 
+        removes the whole list as parentNode is referencing the parent Node which is ul in this
+        case. In order to avoid it, we can put some checks in between.
+        */
+        console.log(e.target.tagName)
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id)
+            let removeIt = e.target.parenNode
+            removeIt.remove()
+        }
+        // removeIt.parentNode.removeChild(removeIt) // Method 2
+    },false)
+    /*
+    Notes about all events listed above.
+    */
 </script>
 
 </html>
