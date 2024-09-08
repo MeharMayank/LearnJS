@@ -1,0 +1,46 @@
+<!--
+Q. What is an API ?
+--------------------
+An API is like a waiter in a restaurant (takes your order, communicates
+it to the kitchen, and brings back the food for you). In order words,
+an API is an intermediary that facilitates communication between different
+software systems allowing them to interact and exchange data.
+
+APIs have two main components : Protocol and Data.
+- APIs define the rules and standards (protocol) for how data should be
+exchanged, as well as the specific data that needs to be sent or received.
+
+APIs are used to create more efficient and user-friendly applications.
+It simplifies development process as it allows developers to leverage existing
+functionalities and data from other systems.
+
+APIs are fundamental for creating today's web applications, as they enable
+seamless integration of different services and features.
+
+Relevant XMLHttpRequest - readyState notes can be refered at API.png
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+</body>
+<script>
+    const requestUrl = "https://api.github.com/users/MeharMayank"
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',requestUrl)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState===4){
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data)
+            console.log(data.followers)
+        }
+    }
+    xhr.send()
+    // Before proceeding, first rewatch & make notes for 39 till here.
+</script>
+</html>

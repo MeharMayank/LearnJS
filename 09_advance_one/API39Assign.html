@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .glass-card {
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .glass-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-card h3 {
+            margin: 20px 0 10px;
+            color: white;
+        }
+
+        .glass-card p {
+            font-size: 18px;
+            color: white;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #3B5998;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2D4373;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card" id="profileCard">
+        <img id="profileImage" src="" alt="Profile Image">
+        <h3 id="profileName"></h3>
+        <p>Followers: <span id="followersCount"></span></p>
+    </div>
+    <button id="loadProfileButton">Load GitHub Profile</button>
+    <script>
+        document.getElementById('loadProfileButton').addEventListener('click', function () {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.github.com/users/MeharMayank', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const user = JSON.parse(xhr.responseText);
+                    // Set the user data in the card
+                    document.getElementById('profileImage').src = user.avatar_url;
+                    document.getElementById('profileName').textContent = user.login;
+                    document.getElementById('followersCount').textContent = user.followers;
+                    // Show the card
+                    document.getElementById('profileCard').classList.add('show');
+                } else {
+                    alert('Unable to fetch data');
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
