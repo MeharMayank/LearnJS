@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    /*
+    All the JS mentioned here were actually run and tested in browser's
+    console. Hence, the JS code section is NOT part of this html file
+    technically. Only elements under body tag are part of this file.
+    */
+    const sayAlpha = function(){
+        console.log("Alpha");
+    }
+    setTimeout(sayAlpha, 2000) // Here time is measured in miliseconds, hence, we have given 
+    // time of 2 secs
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "best JS series"
+    }
+    /*
+    It is good practice to add reference to setTimeOut() function as this
+    reference will allow us to manipulate or conduct various types of tasks
+    with setTimeOut.
+    */
+    const changeMe = setTimeout(changeText, 2000)
+    /*
+    setTimeout would execute even though it is stored under a const variable
+    */
+    // clearTimeout(changeMe)
+
+    // Application of clearTimeout
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe)
+        console.log("STOPPED")
+    })
+</script>
+</html>
