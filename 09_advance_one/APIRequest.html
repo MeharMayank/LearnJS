@@ -28,19 +28,83 @@ Relevant XMLHttpRequest - readyState notes can be refered at API.png
 </head>
 <body style="background-color: #212121;">
 </body>
+<!--
+Now, we usually get APIs in a complex (kind of object) format. This on a
+small scale seems managable but with larger APIs this data could not be 
+understood so easily as the complex structure makes it difficult to read
+and understand from the API directly. 
+
+Hence, we have some sites like JSON formatter which allows us to convert 
+the data obtained from the API into a readable in JSON format. It allows
+us to view the data in tree structure which makes it very easy to understand 
+the code.
+-->
 <script>
     const requestUrl = "https://api.github.com/users/MeharMayank"
     const xhr = new XMLHttpRequest();
+    /* Here XMLHttpRequest can be considered as a class. Here "new"
+    kwyword signifies the fact that we are storing / creating a new
+    vairable for using this object.*/
     xhr.open('GET',requestUrl)
+    /* open is the method which sends the request. All these methods
+    are available to use once we create XMLHttpRequest object type.
+    
+    Now, open method has two parameters (method, string). In method
+    we usually enter values like 'GET', 'POST', 'PAYLOAD' etc.
+    In string, we can enter the api url directly, although we would
+    be following good practices and be using a variable to store
+    the url. */
     xhr.onreadystatechange = function(){
+        /*
+        onreadystatechange property defines a function to be 
+        executed when the readyState changes.
+        */
         console.log(xhr.readyState)
         if(xhr.readyState===4){
+        /*
+        this.responseText tells the current context
+        The parse method in JavaScript is used to convert a JSON string
+        into a JavaScript object
+        */
             const data = JSON.parse(this.responseText)
-            console.log(typeof data)
+        /*
+        Most of the time when we get a response from the URL, it is in 
+        the form of string. It's not neccessary for every case, but generally
+        the response is in the string format. In order, to extract the data 
+        we desire, (in this example) we will convert it into JSON.parse()
+
+        Data type of the response can be checked by using the following syntax :
+        console.log(typeof data) (data def : line 69)
+
+        We can apply the same for Number() or String() as well if we wish to
+        convert into those types, but for this example we will be using JSON.parse
+        which will convert it into object
+        */
             console.log(data.followers)
         }
     }
     xhr.send()
-    // Before proceeding, first rewatch & make notes for 39 till here.
+    /*
+    Now, open does not directly sends request just by adding requesturl
+    in its parameter, open method has to be called first. So, open can
+    not be called by itself, hence we use send method. 
+
+    As soon as the request is sent, the status codes of the request get
+    updated (as per the progress of the request). 
+
+    The readyState returns the (loading) status of the current document.
+    
+    The readyState property of XMLHttpRequest object tracks the status
+    of the request through its lifecycle : 
+
+    1. UNSENT(0) : Initial state, before the request is initialized
+    2. OPENED(1) : The connection is established, ready to send the request
+    3. HEADERS_RECEIVED(2) : The server has responded and sent HTTP headers
+    4. LOADING(3) : The response body is being received
+    5. DONE(4) : The entire operation is complete
+
+    These states help developers track the progress of asynchronous requests
+    and perform actions at different stages of the communication process.
+    */
 </script>
 </html>
